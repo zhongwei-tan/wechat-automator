@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  wechat-automator:
+    build: .
+    volumes:
+      - ./src:/app
+    depends_on:
+      - rabbitmq
+
+  rabbitmq:
+    image: rabbitmq:management
+    expose:
+      - 5672
