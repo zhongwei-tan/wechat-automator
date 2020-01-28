@@ -10,7 +10,7 @@ CELERYBEAT_SCHEDULE = {
 
     'keep_logged_in':{
         'task': 'tasks.keep_logged_in',
-        'schedule': timedelta(hour=1),
+        'schedule': timedelta(hours=1),
     },
 
     'sunday_service_reminder': {
