@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "wechat-automator",
+  "private_key_id": "62d5636fa037c88ff6b05c53b05a3fc1a2cd0846",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDtdC5r9r8y2969\ny6oRXYkmbWK82m2JMKuBqRyLgWBM0iJ/zA2ViQmgj4x2VQyrNAGUW7xg7zFtAilc\nCCsl6uR5ZpT7lPgkVLOiG8I42Gbiy9KuLXQdwv1ZPtngcxUeGuooTLc+oxiscCwX\nD/Hw6jNEq9xhXbwgYyYfid55q+8VOyorZChAbwl2oxyZfLSuRfsDKNURoBjcy4QU\nUR6bwGp7OFa5VxV2THMu7wzKaQE0ybNd0jEQttY/IuU7+V8rN0OYT1GL/Bg6hKQy\ngMQTg4EYz/Kbf8JV93TqCSShI5P20Z6pQxav8BR5kTk2cI/TK2ONdW26FyvjWKa9\nGS70j2SpAgMBAAECggEAAtYIJuh1zKb1IFmyII54MKIOU5idRc3zwnLxYRYsvwYk\nfNfEUsSl/YmxYQlvgwz2Nt4ooBTDR5zGvy9myodlbrDDt0SGeTKcyaMgvPqSsgNC\nsyteT2uwiHQYeJaPSkKCiPQvnRsoFIkrcaQSXPEDJz8RPQV4VX+xqR9FrbjYvG1o\nVfqkAkoUV2LDkqGmr967etoQq70d/46KJUPEmg0vojUvucJ3mmMPBYLhykOEyjdh\nFq4H9a+OTWaBaMAiGPwhNc2btXUqtblDaOMzWKdZjatUwn4MS/wBmNfYATAlscTw\nT7fUEhlbYus9naG4ibMogYC/O23lnhCPqqYAiYwUgQKBgQD5BLY90q+hOQkCFVtK\nrq2DoWdmmFeau0AmTfvyzJtizpsD7ZZO54gOFwrrYq2Df4Wte/yL0odefYjuSTs2\nRC0olxoeOl7ZG6KJeMzF2gQE7QpySLUtuM0KnWQba3QOsQw6leNbGgOp2kgFIyQ2\nAsQpqjIartQIWStCHFITpLFJwQKBgQD0HHd3Km2FCFb9XGb41NwiKELvziQH2EW4\nRMQ/vJJzOjSGZ/BoFlvug5rFs4HpjvH/KIU6D/v2Azz7CM4STBshUool+Em2NBGQ\nqPzEdz8mzd0SfdyOOc5nu3PyOVC2xDcD3v/5v89QSTrNQl2MH9APkEXIPAhWAAVq\nxgGrhpxE6QKBgQCL8QfxiltFAWZ8kz/womXEmYogb/CbdivA2waCFlYkmvMmq/hS\nc29Ua8KpMZVNVvbq3ci5UyDcCzROpTzvbDTsoK3+2tK+s/cNxqNddP3ZPtUmEJIx\nFa+1DWpatnJMZ1b1/ZH9eosggxkCOhN5fuh6ebkaobFq16Glz4CYpW80gQKBgA1T\nyInu/Q+4RteKRezr4iDTReRFwt3SxuuqhXRdXTmBQgDch9mG7vn0oWyNwlf3/+pI\nUg27dawWvSuPbYC+OvT0xqoQBiY2bYcSUsp/ICmEL7+ks3foXAZ5y3i7/FYeHErP\nz/XYrP7bIKS4LNdLnVZcMBMgg+v+EE2mBc1RihKRAoGAZ7BNRKxvhEYIEymGUS+u\nyyvaBXT7G4nSp9gmM3RyEyaaVSjkcR9NUIrs3zE7k8nCBtJPDfr10uzUyhtaJLGH\nv39TH7dTX9d6qlk8C4iqrRCi8LoPeXfiqa1f7sKgFCgdM2q/1glKFC2HjEuEjwjN\nRnVb2GP93qL59pLpgGx6quU=\n-----END PRIVATE KEY-----\n",
+  "client_email": "ddgemeinde@wechat-automator.iam.gserviceaccount.com",
+  "client_id": "109292056279196636330",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/ddgemeinde%40wechat-automator.iam.gserviceaccount.com"
+}
