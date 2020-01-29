@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  wechat-automator:
+  automator:
     build: .
     environment:
       - TZ=Europe/Berlin
