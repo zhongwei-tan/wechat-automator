@@ -8,9 +8,9 @@ CELERY_TIMEZONE = 'Europe/Berlin'
 
 CELERYBEAT_SCHEDULE = {
 
-    'keep_logged_in':{
-        'task': 'tasks.keep_logged_in',
-        'schedule': timedelta(hours=1),
+    'login_refresh':{
+        'task': 'tasks.login_refresh',
+        'schedule': timedelta(minutes=30),
     },
 
     'sunday_service_reminder': {

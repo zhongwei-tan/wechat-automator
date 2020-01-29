@@ -50,5 +50,5 @@ def wednesday_prayer_meeting_reminder():
 
 
 @task
-def keep_logged_in():
+def login_refresh():
     wechat_login()
