@@ -3,6 +3,8 @@ version: '3'
 services:
   wechat-automator:
     build: .
+    environment:
+      - TZ=Europe/Berlin
     volumes:
       - ./src:/app
     depends_on:
@@ -10,5 +12,7 @@ services:
 
   rabbitmq:
     image: rabbitmq:management
+    environment:
+      - TZ=Europe/Berlin
     expose:
       - 5672
