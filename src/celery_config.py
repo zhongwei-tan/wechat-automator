@@ -1,5 +1,5 @@
 from celery.schedules import crontab
-from datetime import timedelta
+from datetime import timedelta, datetime
 
 CELERY_IMPORTS = ('tasks',)
 CELERY_IGNORE_RESULT = False
@@ -8,7 +8,7 @@ CELERY_TIMEZONE = 'Europe/Berlin'
 
 CELERYBEAT_SCHEDULE = {
 
-    'login_refresh':{
+    'login_refresh': {
         'task': 'tasks.login_refresh',
         'schedule': timedelta(minutes=30),
     },
