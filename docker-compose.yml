@@ -14,5 +14,3 @@ services:
     image: rabbitmq:management
     environment:
       - TZ=Europe/Berlin
-    expose:
-      - 5672
