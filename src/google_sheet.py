@@ -45,6 +45,7 @@ def get_and_save_updated_duty_list(service_day: str, reminder_start_day: str, cl
     service_day = service_day.lower()
     reminder_start_day = reminder_start_day.lower()
     result = {}
+    updated = False
 
     for reminder_category, reminder_dict_list in reminder_menu[service_day].items():
         duty = None
@@ -68,9 +69,12 @@ def get_and_save_updated_duty_list(service_day: str, reminder_start_day: str, cl
         if today_is(reminder_start_day):
             updated = True
         else:
-            with open(selected_json_path, "r") as f:
-                old_duty = json.load(f)
-            duty, updated = sense_difference(old_duty, duty)
+            try:
+                with open(selected_json_path, "r") as f:
+                    old_duty = json.load(f)
+                duty, updated = sense_difference(old_duty, duty)
+            except json.JSONDecodeError:
+                pass
 
         with open(selected_json_path, "w") as f:
             json.dump(duty, f)
