@@ -2,7 +2,6 @@ from celery.task import task
 from google_sheet import get_authorized_google_client, get_duty, get_and_save_updated_duty_list
 from wechat import wechat_login, send_message_to_chatroom
 from utils import duty_string
-import itchat
 
 
 sunday_template = """大家好,
@@ -38,5 +37,4 @@ def wednesday_prayer_meeting_reminder():
 
 @task
 def login_refresh():
-    itchat.logout()
     wechat_login()

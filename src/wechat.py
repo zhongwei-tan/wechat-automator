@@ -1,4 +1,5 @@
 import itchat
+import requests
 
 
 def login_callback():
@@ -10,6 +11,8 @@ def logout_callback():
                       loginCallback=login_callback, exitCallback=logout_callback)
 
 def wechat_login():
+    itchat.originInstance.s.close()
+    itchat.originInstance.s = requests.Session()
     itchat.auto_login(hotReload=True, statusStorageDir='itchat.pkl', enableCmdQR=2,
                       loginCallback=login_callback, exitCallback=logout_callback)
 
