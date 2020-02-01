@@ -13,15 +13,13 @@ def today_is(day_of_week: str):
         print("'{}' is not a day of week!".format(day_of_week))
         return False
 
-def sense_difference(old_list: list, new_list: list):
+def sense_difference(old: dict, new: dict):
     updated = False
-    for i, (dict_1, dict_2) in enumerate(zip(old_list, new_list)):
-        for k in dict_1:
-            if dict_1[k] != dict_2[k]:
-                new_list[i][k] = new_list[i][k] + "*"
-                updated = True
-    return new_list, updated
-
+    for (old_key, old_value), (new_key, new_value) in  zip(old.items(), new.items()):
+        if old_value != new_value:
+            new[new_key] = new[new_key] + "*"
+            updated = True
+    return new, updated
 
 def duty_string(duty: dict):
     output = ""
