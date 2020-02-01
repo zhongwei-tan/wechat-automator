@@ -1,10 +1,8 @@
-import os
 from celery.task import task
 from google_sheet import get_authorized_google_client, get_duty, get_and_save_updated_duty_list
 from wechat import wechat_login, send_message_to_chatroom
-from utils import today_is, sense_difference, duty_string
+from utils import duty_string
 import itchat
-import json
 
 
 sunday_template = """大家好,
@@ -31,22 +29,10 @@ def sunday_service_reminder():
 def wednesday_prayer_meeting_reminder():
     
     client = get_authorized_google_client()
-    duty = get_duty("Wednesday", "Wednesday", client)
+    duty_list = get_and_save_updated_duty_list("Wednesday", "Monday", client)
 
-    if not os.path.exists("saved_json/wednesday.json"):
-        open("saved_json/wednesday.json", "a").close()
-
-    if not today_is("Monday"):
-        with open("saved_json/wednesday.json", "r") as f:
-            old_duty = json.load(f)
-        duty, updated = sense_difference(old_duty, duty)
-
-    with open("saved_json/wednesday.json", "w") as f:
-        json.dump(duty, f)
-
-    message = "周三祷告会负责人：{}".format(duty["负责人"])
-
-    if updated:
+    message = "周三祷告会负责人：{}".format(duty_list["wednesday"]["duty"]["负责人"])
+    if duty_list["wednesday"]["updated"]:
         send_message_to_chatroom(message, "Dresden华人基督徒团契")
 
 
