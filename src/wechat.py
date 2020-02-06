@@ -1,5 +1,4 @@
 import itchat
-import requests
 
 
 def login_callback():
@@ -7,12 +6,12 @@ def login_callback():
 
 def logout_callback():
     print('Logout')
+    itchat.auto_login(hotReload=True, statusStorageDir='itchat.pkl', enableCmdQR=2,
+                      loginCallback=login_callback, exitCallback=logout_callback)
 
 def wechat_login():
-    itchat.originInstance.s.close()
-    itchat.originInstance.s = requests.Session()
     itchat.auto_login(hotReload=True, statusStorageDir='itchat.pkl', enableCmdQR=2,
-                      loginCallback=login_callback)
+                      loginCallback=login_callback, exitCallback=logout_callback)
 
 def send_message_to_chatroom(message: str, chatroom_name: str):
     try:
