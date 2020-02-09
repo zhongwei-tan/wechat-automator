@@ -1,4 +1,4 @@
-day_number = {
+datetime_day_number = {
     'monday': 0,
     'tuesday': 1,
     'wednesday': 2,
@@ -8,19 +8,12 @@ day_number = {
     'sunday': 6,
 }
 
-reminder_menu = {
-    "sunday": {
-        "service": [  ## service reminder
-            {"Sunday": "saved_json/sunday.json"}
-        ],
-        "worship": [  ## worship reminder
-            {"Living Hope": "saved_json/living_hope.json"},
-            {"Awake": "saved_json/awake.json"}
-        ],
-    },
-    "wednesday": {
-        "prayer": [  ## prayer reminder
-            {"Wednesday": "saved_json/wednesday.json"}
-        ]
-    },
+crontab_day_number = {
+    'monday': 1,
+    'tuesday': 2,
+    'wednesday': 3,
+    'thursday': 4,
+    'friday': 5,
+    'saturday': 6,
+    'sunday': 0,
 }

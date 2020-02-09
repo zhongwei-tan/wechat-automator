@@ -1,0 +1,42 @@
+prayer_reminder:
+  reminder_day: "Monday"
+  service_day: "Wednesday"
+  sheet_name: "Wednesday"
+  chatroom: "Dresden华人基督徒团契"
+  template: "周三祷告会{}"
+
+sunday_service_reminder:
+  reminder_day: "Thursday"
+  service_day: "Sunday"
+  sheet_name: "Sunday"
+  chatroom: "Dresden华人基督徒团契"
+  template: |
+    大家好,
+    以下是这周主日崇拜的服事：
+    {}
+    更完整资料：https://docs.google.com/spreadsheets/d/1oUnnLwW6jDYatoXsCJLTFSpDozwlX3hL-BIb-xeIzy0/edit?usp=sharing
+    若有疑问，请联系蔡师母。
+
+livinghope_service_reminder:
+  reminder_day: "Tuesday"
+  service_day: "Sunday"
+  sheet_name: "Living Hope"
+  chatroom: "敬拜團"
+  template: |
+    大家好，
+    下周日由Living Hope敬拜团带领敬拜：
+    {}
+    更完整资料：https://docs.google.com/spreadsheets/d/1oUnnLwW6jDYatoXsCJLTFSpDozwlX3hL-BIb-xeIzy0/edit?usp=sharing
+    若有疑问，请联系若涵姐妹。
+
+awake_service_reminder:
+  reminder_day: "Tuesday"
+  service_day: "Sunday"
+  sheet_name: "Awake"
+  chatroom: "敬拜團"
+  template: |
+    大家好，
+    下周日由Awake敬拜团带领敬拜：
+    {}
+    更完整资料：https://docs.google.com/spreadsheets/d/1oUnnLwW6jDYatoXsCJLTFSpDozwlX3hL-BIb-xeIzy0/edit?usp=sharing
+    若有疑问，请联系柏万弟兄。

@@ -1,11 +1,12 @@
 import datetime
-from catalog import day_number
+from catalog import datetime_day_number, crontab_day_number
+from celery.schedules import crontab
 
 
 def today_is(day_of_week: str):
     today = datetime.datetime.today().weekday()
     try:
-        if today == day_number[day_of_week.lower()]:
+        if today == datetime_day_number[day_of_week.lower()]:
             return True
         else:
             return False
@@ -15,11 +16,15 @@ def today_is(day_of_week: str):
 
 def sense_difference(old: dict, new: dict):
     updated = False
-    for (old_key, old_value), (new_key, new_value) in  zip(old.items(), new.items()):
-        if old_value != new_value:
-            new[new_key] = new[new_key] + "*"
-            updated = True
-    return new, updated
+    if old:
+        for (old_key, old_value), (new_key, new_value) in zip(old.items(), new.items()):
+            if old_value != new_value:
+                new[new_key] = new[new_key] + "*"
+                updated = True
+        return new, updated
+    else:
+        updated = True
+        return new, updated
 
 def duty_string(duty: dict):
     output = ""
@@ -29,3 +34,10 @@ def duty_string(duty: dict):
         else:
             output = output + "{}: {}\n".format(key, value)
     return output
+
+def add_crontab(reminder_dict: dict):
+    for key in reminder_dict.keys():
+        reminder_day = crontab_day_number[reminder_dict[key]["reminder_day"].lower()]
+        service_day = crontab_day_number[reminder_dict[key]["service_day"].lower()]
+        reminder_dict[key]["crontab"] = crontab(day_of_week="{}-{}".format(reminder_day, service_day),
+                                                hour=8, minute=0)

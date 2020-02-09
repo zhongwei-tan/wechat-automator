@@ -6,7 +6,7 @@ import datetime
 import re
 import json
 from utils import today_is, sense_difference
-from catalog import day_number, reminder_menu
+from catalog import datetime_day_number
 
 
 def get_authorized_google_client():
@@ -20,7 +20,7 @@ def get_authorized_google_client():
 
 def get_service_date(service_day: str):
     service_date = datetime.date.today()
-    while service_date.weekday() != day_number[service_day.lower()]:
+    while service_date.weekday() != datetime_day_number[service_day.lower()]:
         service_date += datetime.timedelta(1)
     return service_date
 
@@ -40,44 +40,33 @@ def get_duty(sheet_name: str, service_day: str, client: gspread.client.Client):
             break
     return duty
 
-def get_and_save_updated_duty_list(service_day: str, reminder_start_day: str, client: gspread.client.Client):
+def get_and_save_updated_duty_list(reminder_start_day: str, 
+                                   service_day: str, 
+                                   sheet_name: str,
+                                   client: gspread.client.Client):
 
-    service_day = service_day.lower()
-    reminder_start_day = reminder_start_day.lower()
-    result = {}
+    reminder_start_day = reminder_start_day
+    service_day = service_day
     updated = False
+    path = "saved_json/{}.json".format(sheet_name.lower().replace(" ", "_"))
 
-    for reminder_category, reminder_dict_list in reminder_menu[service_day].items():
-        duty = None
-        selected_json_path = None
-        selected_sheet_name = None
-        # Get duty from latest google sheet data
-        for reminder_dict in reminder_dict_list:
-            for sheet_name, path in reminder_dict.items():
-                duty_buffer = get_duty(sheet_name, service_day, client)
-                if duty_buffer:
-                    selected_sheet_name = sheet_name
-                    selected_json_path = path
-                duty = duty or duty_buffer
+    if not os.path.exists("saved_json"):
+        os.mkdir("saved_json")
+    if not os.path.exists(path):
+        open(path, "a").close()
+        
+    duty = get_duty(sheet_name, service_day, client)
 
-        if not os.path.exists("saved_json"):
-            os.mkdir("saved_json")
+    if today_is(reminder_start_day):
+        updated = True
+    else:
+        try:
+            with open(path, "r") as f:
+                old_duty = json.load(f)
+            duty, updated = sense_difference(old_duty, duty)
+        except json.JSONDecodeError:
+            pass
 
-        if not os.path.exists(selected_json_path):
-            open(selected_json_path, "a").close()
-
-        if today_is(reminder_start_day):
-            updated = True
-        else:
-            try:
-                with open(selected_json_path, "r") as f:
-                    old_duty = json.load(f)
-                duty, updated = sense_difference(old_duty, duty)
-            except json.JSONDecodeError:
-                pass
-
-        with open(selected_json_path, "w") as f:
-            json.dump(duty, f)
-
-        result[selected_sheet_name.lower()] = {"duty": duty, "updated": updated}
-    return result  ## dict of dict
+    with open(path, "w") as f:
+        json.dump(duty, f)
+    return {"duty": duty, "updated": updated}
