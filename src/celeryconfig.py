@@ -1,24 +1,40 @@
 from datetime import timedelta
-import yaml
-from utils import add_crontab
+from celery.schedules import crontab
 
 CELERY_IMPORTS = ("tasks",)
 CELERY_IGNORE_RESULT = False
 BROKER_URL = "amqp://rabbitmq:5672"
 CELERY_TIMEZONE = "Europe/Berlin"
+
 CELERYBEAT_SCHEDULE = {
+
     "login_refresh": {
         "task": "tasks.login_refresh",
         "schedule": timedelta(minutes=30),
     },
-}
 
-## Open reminder_list.yml and add on reminder tasks
-reminder_dict = yaml.load(open("reminder_list.yml"), Loader=yaml.FullLoader)
-add_crontab(reminder_dict)
-for reminder_name, reminder in reminder_dict.items():
-    CELERYBEAT_SCHEDULE[reminder_name] = {
-        "task": "tasks.duty_reminder",
-        "schedule": reminder["crontab"],
-        "kwargs": reminder
+    "prayer_reminder": {
+        "task": "task.duty_reminder",
+        "schedule": crontab(day_of_week="1-3", hour=8, minute=0),
+        "args": ("prayer_reminder",)
+    },
+
+    "sunday_service_reminder": {
+        "task": "task.duty_reminder",
+        "schedule": crontab(day_of_week="4-0", hour=8, minute=0),
+        "args": ("sunday_service_reminder",)
+    },
+
+    "livinghope_service_reminder": {
+        "task": "task.duty_reminder",
+        "schedule": crontab(day_of_week="2-0", hour=8, minute=0),
+        "args": ("livinghope_service_reminder",)
+    },
+
+    "awake_service_reminder": {
+        "task": "task.duty_reminder",
+        "schedule": crontab(day_of_week="2-0", hour=8, minute=0),
+        "args": ("awake_service_reminder",)
     }
+
+}

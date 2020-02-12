@@ -1,6 +1,5 @@
 import datetime
-from catalog import datetime_day_number, crontab_day_number
-from celery.schedules import crontab
+from catalog import datetime_day_number
 
 
 def today_is(day_of_week: str):
@@ -34,10 +33,3 @@ def duty_string(duty: dict):
         else:
             output = output + "{}: {}\n".format(key, value)
     return output
-
-def add_crontab(reminder_dict: dict):
-    for key in reminder_dict.keys():
-        reminder_day = crontab_day_number[reminder_dict[key]["reminder_day"].lower()]
-        service_day = crontab_day_number[reminder_dict[key]["service_day"].lower()]
-        reminder_dict[key]["crontab"] = crontab(day_of_week="{}-{}".format(reminder_day, service_day),
-                                                hour=8, minute=0)
