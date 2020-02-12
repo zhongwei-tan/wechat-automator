@@ -33,3 +33,9 @@ def duty_string(duty: dict):
         else:
             output = output + "{}: {}\n".format(key, value)
     return output
+
+def get_service_date(service_day: str):
+    service_date = datetime.date.today()
+    while service_date.weekday() != datetime_day_number[service_day.lower()]:
+        service_date += datetime.timedelta(1)
+    return service_date
