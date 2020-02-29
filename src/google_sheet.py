@@ -4,7 +4,7 @@ import dateparser
 import re
 import json
 from oauth2client.service_account import ServiceAccountCredentials
-from utils import today_is, sense_difference, get_service_date
+from utils import check_today, sense_difference, get_service_date
 
 
 def get_authorized_google_client():
@@ -40,23 +40,23 @@ def get_and_save_updated_duty_list(reminder_start_day: str,
     reminder_start_day = reminder_start_day
     service_day = service_day
     path = "saved_json/{}.json".format(sheet_name.lower().replace(" ", "_"))
+    updated = False
 
     if not os.path.exists("saved_json"):
         os.mkdir("saved_json")
     if not os.path.exists(path):
         open(path, "a").close()
+        updated = True
         
     duty = get_duty(sheet_name, service_day, client)
 
-    if today_is(reminder_start_day):
+    if check_today(reminder_start_day):
         updated = True
-    else:
-        try:
-            with open(path, "r") as f:
-                old_duty = json.load(f)
-            duty, updated = sense_difference(old_duty, duty)
-        except json.JSONDecodeError:
-            updated = True
+
+    if not updated:
+        with open(path, "r") as f:
+            old_duty = json.load(f)
+        duty, updated = sense_difference(old_duty, duty)
 
     with open(path, "w") as f:
         json.dump(duty, f)

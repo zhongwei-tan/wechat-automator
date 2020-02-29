@@ -39,7 +39,7 @@ def send_message_to_chatroom(message: str, chatroom_name: str):
 # Check if all chatrooms in reminder_list.yml are found
 if __name__ == "__main__":
     wechat_login()
-    
+
     print("Checking chatrooms...")
     with open("reminder_list.yml", "r") as file:
         reminders = yaml.load(file, Loader=yaml.FullLoader)

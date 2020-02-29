@@ -7,6 +7,8 @@ import yaml
 
 @task
 def duty_reminder(reminder_name):
+    wechat_login()
+
     with open("reminder_list.yml", "r") as file:
         reminders = yaml.load(file, Loader=yaml.FullLoader)
         reminder = reminders[reminder_name]
