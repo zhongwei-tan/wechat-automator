@@ -20,19 +20,19 @@ CELERYBEAT_SCHEDULE = {
     },
 
     "sunday_service_reminder": {
-        "task": "task.duty_reminder",
+        "task": "tasks.duty_reminder",
         "schedule": crontab(day_of_week="4-0", hour=8, minute=0),
         "args": ("sunday_service_reminder",)
     },
 
     "livinghope_service_reminder": {
-        "task": "task.duty_reminder",
+        "task": "tasks.duty_reminder",
         "schedule": crontab(day_of_week="2-0", hour=8, minute=0),
         "args": ("livinghope_service_reminder",)
     },
 
     "awake_service_reminder": {
-        "task": "task.duty_reminder",
+        "task": "tasks.duty_reminder",
         "schedule": crontab(day_of_week="2-0", hour=8, minute=0),
         "args": ("awake_service_reminder",)
     }
