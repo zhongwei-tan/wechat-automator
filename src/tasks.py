@@ -22,7 +22,7 @@ def duty_reminder(reminder_name):
     client = get_authorized_google_client()
     duty_info = get_and_save_updated_duty_list(reminder_day, service_day, sheet_name, client)
 
-    if duty_info["updated"]:
+    if duty_info["updated"] and duty_info["duty"]:
         message = template.format(duty_string(duty_info["duty"]))
         send_message_to_chatroom(message, chatroom)
 
