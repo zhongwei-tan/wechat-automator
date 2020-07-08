@@ -14,7 +14,7 @@ CELERYBEAT_SCHEDULE = {
     },
 
     "prayer_reminder": {
-        "task": "task.duty_reminder",
+        "task": "tasks.duty_reminder",
         "schedule": crontab(day_of_week="1-3", hour=8, minute=0),
         "args": ("prayer_reminder",)
     },
