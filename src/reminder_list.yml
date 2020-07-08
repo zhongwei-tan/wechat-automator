@@ -6,7 +6,7 @@ prayer_reminder:
   template: "周三祷告会{}"
 
 sunday_service_reminder:
-  reminder_day: "Thursday"
+  reminder_day: "Wednesday"
   service_day: "Sunday"
   sheet_name: "Sunday"
   chatroom: "Dresden华人基督徒团契"
