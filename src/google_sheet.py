@@ -56,8 +56,8 @@ def get_and_save_updated_duty_list(reminder_start_day: str,
     if not updated:
         with open(path, "r") as f:
             old_duty = json.load(f)
+        with open(path, "w") as f:
+            json.dump(duty, f)
         duty, updated = sense_difference(old_duty, duty)
 
-    with open(path, "w") as f:
-        json.dump(duty, f)
     return {"duty": duty, "updated": updated}
