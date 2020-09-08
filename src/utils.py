@@ -28,7 +28,7 @@ def sense_difference(old: dict, new: dict):
 def duty_string(duty: dict):
     output = ""
     for key, value in duty.items():
-        if value == "" or value in "无 " or key in ["日期", "爱宴主厨", "爱宴打扫", "中心打扫"]:
+        if value == "" or value in "无 " or key in ["日期", "爱宴主厨", "爱宴打扫"]:
             pass
         else:
             output = output + f"{key}: {value}\n"
