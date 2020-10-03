@@ -18,7 +18,6 @@ def sense_difference(old: dict, new: dict):
     if old:
         for (old_key, old_value), (new_key, new_value) in zip(old.items(), new.items()):
             if old_value != new_value:
-                new[new_key] = new[new_key] + "*"
                 updated = True
         return new, updated
     else:
